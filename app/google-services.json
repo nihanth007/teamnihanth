@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "849281863318",
+    "firebase_url": "https://team-giet.firebaseio.com",
+    "project_id": "team-giet",
+    "storage_bucket": "team-giet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849281863318:android:7e40d1acd12220ef",
+        "android_client_info": {
+          "package_name": "ml.nihanth.teamgiet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849281863318-lphlrc32rjl1e6hflr0nhekarckuvq1t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ml.nihanth.teamgiet",
+            "certificate_hash": "3DB87229B45793835BC9D0DE8C27726E851F9425"
+          }
+        },
+        {
+          "client_id": "849281863318-ct1rfdkaovji6bnid0umieu2t9uqd7iu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9OxsLbNIzpwmfP5kRYqZ5h7QRBV_PxQM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849281863318-ct1rfdkaovji6bnid0umieu2t9uqd7iu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
