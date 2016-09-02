@@ -41,7 +41,7 @@
     <TextView
         android:textAlignment="center"
         android:text="Already Registered? Sign In Here"
-        android:id="@+id/msg"
+        android:id="@+id/textViewSignin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
