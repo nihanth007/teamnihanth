@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Button registerButton;
     private EditText editTextEmail;
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textViewSignin = (TextView) findViewById(R.id.textViewSignin);
 
         registerButton.setOnClickListener(this);
+        textViewSignin.setOnClickListener(this);
 
     }
 
@@ -68,7 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     //User is Successfully Registered
-                    progress.cancel();
+                    progress.dismiss();
+                    progress.dismiss();
+                    progress.dismiss();
                     Toast.makeText(MainActivity.this, " User Successfully Registered ", Toast.LENGTH_SHORT).show();
 
                 }
@@ -86,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(view == textViewSignin){
             // Login Activity
+            Toast.makeText(MainActivity.this, " Sign-In Page Loading ", Toast.LENGTH_SHORT).show();
         }
     }
 }
