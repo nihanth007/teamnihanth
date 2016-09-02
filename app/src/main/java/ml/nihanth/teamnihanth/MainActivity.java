@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,14 +25,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextPassword;
     private TextView textViewSignin;
     private ProgressDialog progress;
-    private FirebaseAuth firebaseAuth;
+    public FirebaseAuth fa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         progress = new ProgressDialog(this);
 
@@ -41,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
         textViewSignin = (TextView) findViewById(R.id.textViewSignin);
+
+        registerButton.setOnClickListener(this);
 
     }
 
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progress.setMessage("Registering User..");
         progress.show();
 
-        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        fa.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+
         if(view == registerButton){
             registerUser();
         }
