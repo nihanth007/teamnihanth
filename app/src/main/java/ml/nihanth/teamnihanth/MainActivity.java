@@ -12,7 +12,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextPassword;
     private TextView textViewSignin;
     private ProgressDialog progress;
-    public FirebaseAuth fa;
+    private FirebaseAuth fa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         progress = new ProgressDialog(this);
+        fa = FirebaseAuth.getInstance();
 
         registerButton = (Button) findViewById(R.id.registerButton);
 
@@ -68,7 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     //User is Successfully Registered
+                    progress.cancel();
                     Toast.makeText(MainActivity.this, " User Successfully Registered ", Toast.LENGTH_SHORT).show();
+
                 }
                 else
                     Toast.makeText(MainActivity.this, " Please Try Again ", Toast.LENGTH_SHORT).show();
