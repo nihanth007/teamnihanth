@@ -1,14 +1,12 @@
 package ml.nihanth.teamnihanth;
 
-import android.app.ProgressDialog;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,13 +15,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button registerButton;
     private EditText editTextEmail;
     private EditText editTextPassword;
     private TextView textViewSignin;
-    private ProgressDialog progress;
     private FirebaseAuth fa;
 
     @Override
@@ -31,7 +28,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progress = new ProgressDialog(this);
         fa = FirebaseAuth.getInstance();
 
         registerButton = (Button) findViewById(R.id.registerButton);
@@ -61,19 +57,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             return;
         }
 
-        progress.setMessage("Registering User..");
-        progress.show();
 
         fa.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     //User is Successfully Registered
-                    progress.dismiss();
-                    progress.dismiss();
-                    progress.dismiss();
                     Toast.makeText(MainActivity.this, " User Successfully Registered ", Toast.LENGTH_SHORT).show();
-
                 }
                 else
                     Toast.makeText(MainActivity.this, " Please Try Again ", Toast.LENGTH_SHORT).show();
