@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignIn extends BaseActivity {
+public class SignIn extends AppCompatActivity {
 
     private FirebaseAuth fa;
     private EditText ET_email;

@@ -1,5 +1,6 @@
 package ml.nihanth.teamnihanth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (task.isSuccessful()){
                     //User is Successfully Registered
                     Toast.makeText(MainActivity.this, " User Successfully Registered ", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this,SignIn.class);
+                    startActivity(intent);
                 }
                 else
                     Toast.makeText(MainActivity.this, " Please Try Again ", Toast.LENGTH_SHORT).show();
@@ -79,7 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(view == textViewSignin){
             // Login Activity
-            Toast.makeText(MainActivity.this, " Sign-In Page Loading ", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this,SignIn.class);
+            startActivity(intent);
         }
     }
 }
