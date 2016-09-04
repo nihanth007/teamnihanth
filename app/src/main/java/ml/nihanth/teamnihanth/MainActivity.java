@@ -1,5 +1,6 @@
 package ml.nihanth.teamnihanth;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextPassword;
     private TextView textViewSignin;
     private FirebaseAuth fa;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         fa = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
 
         registerButton = (Button) findViewById(R.id.registerButton);
 
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void registerUser(){
         String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+        final String password = editTextPassword.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
             //Email is Empty
@@ -58,12 +61,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-
+        progressDialog.setMessage(" Registering ");
+        progressDialog.show();
         fa.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     //User is Successfully Registered
+                    progressDialog.dismiss();
                     Toast.makeText(MainActivity.this, " User Successfully Registered ", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this,SignIn.class);
                     startActivity(intent);
@@ -72,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(MainActivity.this, " Please Try Again ", Toast.LENGTH_SHORT).show();
             }
         });
+        progressDialog.dismiss();
     }
 
     @Override
