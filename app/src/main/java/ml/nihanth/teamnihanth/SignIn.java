@@ -26,7 +26,6 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     private TextView textViewRegister;
     private ProgressDialog progressDialog;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +63,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                     //User is Successfully Registered
                     progressDialog.dismiss();
                     Toast.makeText(SignIn.this, " You are Successfully Signed In ", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignIn.this,ChatActivity.class);
+                    Intent intent = new Intent(SignIn.this,MainMenu.class);
                     startActivity(intent);
                 }
                 else
